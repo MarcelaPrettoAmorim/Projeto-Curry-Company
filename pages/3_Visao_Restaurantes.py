@@ -107,7 +107,7 @@ def avg_std_time_delivery(df1, festival, op):
     if op == 'avg':
         df_aux = (df1.loc[:, ['Time_taken(min)', 'Festival']].groupby('Festival').agg({'Time_taken(min)': ['mean',    'std']}))
         df_aux.columns = ['avg_time', 'std_time']
-        df_aux = df_aux.reset_index
+        df_aux = df_aux.reset_index()
 
         # Selecionando somente a condição onde Festival = Yes
         df_aux = np.round(df_aux.loc[df_aux['Festival'] == festival, op], 2)     
