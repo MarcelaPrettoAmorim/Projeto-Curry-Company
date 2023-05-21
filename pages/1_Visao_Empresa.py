@@ -206,7 +206,6 @@ df1 = df1.loc[linhas_selecionadas, :]
 linhas_selecionadas = df1['Road_traffic_density'].isin(traffic_options)
 df1 = df1.loc[linhas_selecionadas, :]
 
-st.dataframe(df1)
 # -----------------------------------
 #         Layout no Streamlit
 # -----------------------------------
