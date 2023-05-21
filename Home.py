@@ -9,8 +9,8 @@ st.set_page_config(
 )
 
 #image_path = '/Users/Usuario/Documents/DS/Repos/FCT/'
-image = Image.open('Logo.png')
-st.sidebar.image(image, width = 120)
+image = Image.open('Logo.jpg')
+st.sidebar.image(image, width = 240)
 
 st.sidebar.markdown('# Cury Company')
 st.sidebar.markdown('## Fastest Delivery in Town')
