@@ -104,7 +104,7 @@ def avg_std_time_delivery(df1, festival, op):
             Output:
                 -df: dataframe com 2 colunas e 1 linhas
     """
-    if op == 'avg':
+    #if op == 'avg':
         df_aux = (df1.loc[:, ['Time_taken(min)', 'Festival']].groupby('Festival').agg({'Time_taken(min)': ['mean',    'std']}))
         df_aux.columns = ['avg_time', 'std_time']
         df_aux = df_aux.reset_index()
@@ -112,7 +112,7 @@ def avg_std_time_delivery(df1, festival, op):
         # Selecionando somente a condição onde Festival = Yes
         df_aux = np.round(df_aux.loc[df_aux['Festival'] == festival, op], 2)     
         
-    return df_aux
+        return df_aux
 
 def avg_std_time_graph(df1):
     cols = ['City', 'Time_taken(min)']
