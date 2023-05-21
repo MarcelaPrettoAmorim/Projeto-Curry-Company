@@ -8,7 +8,6 @@ st.set_page_config(
     page_icon = '🎲'
 )
 
-#image_path = '/Users/Usuario/Documents/DS/Repos/FCT/'
 image = Image.open('Logo.jpg')
 st.sidebar.image(image, width = 240)
 
