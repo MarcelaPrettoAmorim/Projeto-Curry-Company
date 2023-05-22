@@ -65,6 +65,7 @@ def clean_code(df1):
     df1.loc[:, 'City'] = df1.loc[:, 'City'].str.strip()
     df1.loc[:, 'Festival'] = df1.loc[:, 'Festival'].str.strip()
 
+    # Remoção do termo '(min)' e conversão da coluna Time_taken para inteiro
     df1['Time_taken(min)'] = df1['Time_taken(min)'].apply( lambda x: x.split('(min) ')[1])
     df1['Time_taken(min)'] = df1['Time_taken(min)'].astype(int)
     
@@ -104,7 +105,7 @@ def avg_std_time_delivery(df1, festival, op):
             Output:
                 -df: dataframe com 2 colunas e 1 linhas
     """
-    #if op == 'avg':
+    
     df_aux = (df1.loc[:, ['Time_taken(min)', 'Festival']].groupby('Festival').agg({'Time_taken(min)': ['mean',    'std']}))
     df_aux.columns = ['avg_time', 'std_time']
     df_aux = df_aux.reset_index()
@@ -141,13 +142,13 @@ def avg_std_time_on_traffic(df1):
     return fig
 
 #--------------------------Início da Estrutura Lógica do código--------------------------
-#-----------------------------------------
-# Importar dataset
+#----------------------------------------------------------------------------------------
+#            Importar dataset
 #-----------------------------------------
 df = pd.read_csv('dataset/train.csv')
 
 #-----------------------------------------
-# Limpeza do dataframe
+#        Limpeza do dataframe
 #-----------------------------------------
 df1 = df.copy()
 df1 = clean_code(df1)
@@ -159,7 +160,6 @@ df1 = clean_code(df1)
 # -----------------------------------
 st.header('Marketplace - Visão Restaurantes')
 
-#image_path = 'Logo.png'
 image = Image.open('Logo.jpg')
 st.sidebar.image(image, width = 240)
 
@@ -229,17 +229,7 @@ with tab1:
             
             
         with col3:
-            df_aux = avg_std_time_delivery(df1, 'Yes', 'avg_time')
-            #col3.metric('T. medio de entrega com Festival', df_aux)
-            
-            #df_aux = df1.loc[:, ['Time_taken(min)', 'Festival']].groupby('Festival').mean().reset_index()
-
-            #Remover linhas com valores vazios na coluna Festival
-            #df1 = df1.loc[(df1['Festival'] != 'NaN'), :].copy()
-
-            # Selecionando somente a condição onde Festival = Yes
-            #df_aux = np.round(df_aux.loc[(df_aux['Festival'] == 'Yes'), 'Time_taken(min)'], 2)
-            
+            df_aux = avg_std_time_delivery(df1, 'Yes', 'avg_time')           
             col3.metric('T. medio de entrega com Festival', df_aux)
             
         with col4:
