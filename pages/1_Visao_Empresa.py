@@ -87,9 +87,6 @@ def traffic_order_share(df1):
     # Selecionar linhas necessárias
     df_aux = df1.loc[:, ['ID', 'Road_traffic_density']].groupby('Road_traffic_density').count().reset_index().copy()
 
-    # Remover valores nulos da coluna Road_traffic_density
-    #df_aux = df_aux.loc[df_aux['Road_traffic_density'] != 'NaN', :]
-
     # Criar coluna auxiliar com as porcentagens por cada tipo de tráfego
     df_aux['Porcentagem_trafego'] = df_aux['ID']/df_aux['ID'].sum()
 
@@ -101,8 +98,6 @@ def traffic_order_share(df1):
 def traffic_order_city(df1)          :  
     # Selecionar linhas e agrupar por cidade e por tipo de tráfego
     df_aux = df1.loc[:, ['ID', 'City', 'Road_traffic_density']].groupby(['City', 'Road_traffic_density']).count().reset_index().copy()
-        
-    #df_aux = df_aux.loc[df_aux['Road_traffic_density'] != 'NaN', :]
 
     # Desenhar gráfico de bolhas usando biblioteca Plotly
     fig = px.scatter(df_aux, x = 'City', y = 'Road_traffic_density', size = 'ID', color = 'City')
