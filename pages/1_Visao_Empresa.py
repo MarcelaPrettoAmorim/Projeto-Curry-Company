@@ -65,6 +65,7 @@ def clean_code(df1):
     df1.loc[:, 'City'] = df1.loc[:, 'City'].str.strip()
     df1.loc[:, 'Festival'] = df1.loc[:, 'Festival'].str.strip()
 
+    # Remoção do "(min)" e conversão da coluna Time_taken em inteiro
     df1['Time_taken(min)'] = df1['Time_taken(min)'].apply( lambda x: x.split('(min) ')[1])
     df1['Time_taken(min)'] = df1['Time_taken(min)'].astype(int)
     
@@ -87,7 +88,7 @@ def traffic_order_share(df1):
     df_aux = df1.loc[:, ['ID', 'Road_traffic_density']].groupby('Road_traffic_density').count().reset_index().copy()
 
     # Remover valores nulos da coluna Road_traffic_density
-    df_aux = df_aux.loc[df_aux['Road_traffic_density'] != 'NaN', :]
+    #df_aux = df_aux.loc[df_aux['Road_traffic_density'] != 'NaN', :]
 
     # Criar coluna auxiliar com as porcentagens por cada tipo de tráfego
     df_aux['Porcentagem_trafego'] = df_aux['ID']/df_aux['ID'].sum()
@@ -101,7 +102,7 @@ def traffic_order_city(df1)          :
     # Selecionar linhas e agrupar por cidade e por tipo de tráfego
     df_aux = df1.loc[:, ['ID', 'City', 'Road_traffic_density']].groupby(['City', 'Road_traffic_density']).count().reset_index().copy()
         
-    df_aux = df_aux.loc[df_aux['Road_traffic_density'] != 'NaN', :]
+    #df_aux = df_aux.loc[df_aux['Road_traffic_density'] != 'NaN', :]
 
     # Desenhar gráfico de bolhas usando biblioteca Plotly
     fig = px.scatter(df_aux, x = 'City', y = 'Road_traffic_density', size = 'ID', color = 'City')
@@ -149,18 +150,19 @@ def country_maps(df1):
     # Criar mapa
     map = folium.Map()
     
+    # Pontos das locacidades 
     for index, location_info in df_aux.iterrows():
         folium.Marker([location_info['Delivery_location_latitude'],location_info['Delivery_location_longitude']], popup = location_info[['City','Road_traffic_density']]).add_to(map)
         
     folium_static(map, width = 1024, height =600) 
 #--------------------------Início da Estrutura Lógica do código--------------------------
-#-----------------------------------------
-# Importar dataset
+#----------------------------------------------------------------------------------------
+#          Importar dataset
 #-----------------------------------------
 df = pd.read_csv('dataset/train.csv')
 
 #-----------------------------------------
-# Limpeza do dataframe
+#         Limpeza do dataframe
 #-----------------------------------------
 df1 = df.copy()
 df1 = clean_code(df1)
@@ -225,8 +227,7 @@ with tab1:
             st.header('Traffic Order Share')
             fig = traffic_order_share(df1)
             st.plotly_chart(fig, use_container_width = True)
-           
-            
+          
         with col2:
             st.header('Traffic Order City')
             fig = traffic_order_city(df1)
