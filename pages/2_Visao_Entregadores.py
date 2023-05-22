@@ -63,6 +63,7 @@ def clean_code(df1):
     df1.loc[:, 'City'] = df1.loc[:, 'City'].str.strip()
     df1.loc[:, 'Festival'] = df1.loc[:, 'Festival'].str.strip()
 
+    # Remoção do termo '(min)' e conversão da coluna Time_taken para inteiro
     df1['Time_taken(min)'] = df1['Time_taken(min)'].apply( lambda x: x.split('(min) ')[1])
     df1['Time_taken(min)'] = df1['Time_taken(min)'].astype(int)
     
@@ -82,13 +83,13 @@ def top_delivers(df1, top_asc):
     
     return df3
 #--------------------------Início da Estrutura Lógica do código--------------------------
-#-----------------------------------------
-# Importar dataset
+#----------------------------------------------------------------------------------------
+#            Importar dataset
 #-----------------------------------------
 df = pd.read_csv('dataset/train.csv')
 
 #-----------------------------------------
-# Limpeza do dataframe
+#          Limpeza do dataframe
 #-----------------------------------------
 df1 = df.copy()
 df1 = clean_code(df1)
