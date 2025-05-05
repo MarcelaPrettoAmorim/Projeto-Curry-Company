@@ -5,10 +5,10 @@ from PIL import Image
 st.set_page_config(
     page_title = 'Home',
     layout = 'wide',
-    page_icon = '🎲'
+    page_icon = '🍴'
 )
 
-image = Image.open('Logo.jpg')
+image = Image.open('food_logo.png')
 st.sidebar.image(image, width = 240)
 
 st.sidebar.markdown('# Cury Company')
@@ -19,17 +19,16 @@ st.write('# Curry Company Growth Dashboard')
 
 st.markdown(
     """
-    Growth Dashboard foi construído para acompanhar as métricas de crescimento dos Entregadores e Restaurantes.
-    ### Como utilizar esse Growth Dashboard?
+    Growth Dashboard construído para acompanhar as métricas de crescimento de entregadores e restaurantes.
+    ### Sobre esse Growth Dashboard:
     - Visão Empresa:
-        - Visão Gerencial: métricas gerais de comportamento.
-        - Visão Tática: indicadores semanais de crescimento.
-        - Visão Geográfica: Insights de geolocalização.
+        - *Visão Gerencial: métricas gerais de comportamento*.
+        - *Visão Tática: indicadores semanais de crescimento*.
+        - *Visão Geográfica: Insights de geolocalização*.
     - Visão Entregador:
-        - Acompanhamento dos indicadores semanais de crescimento.
+        - *Acompanhamento dos indicadores semanais de crescimento*.
     - Visão Restaurantes:
-        - Indicadores semanais de crescimento dos restaurantes.
-    ### Ask for Help
-    - Time de Data Science no Discord
-        -@mmpamorim
+        - *Indicadores semanais de crescimento dos restaurantes*.
+    ### Contato
+    - LinkedIn: [Marcela Amorim](https://www.linkedin.com/in/marcela-de-pretto-amorim/).
     """)
