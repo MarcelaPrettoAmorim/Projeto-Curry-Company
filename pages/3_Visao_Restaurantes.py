@@ -188,8 +188,6 @@ climatic_options = st.sidebar.multiselect(
     ['conditions Cloudy', 'conditions Fog', 'conditions Sandstorms', 'conditions Stormy', 'conditions Sunny', 'conditions Windy'],
     default = ['conditions Cloudy', 'conditions Fog', 'conditions Sandstorms', 'conditions Stormy', 'conditions Sunny', 'conditions Windy'])
 
-st.sidebar.markdown("""---""")
-st.sidebar.markdown('### Powered by Comunidade DS')
 
 # Filtro de datas
 linhas_selecionadas = df1['Order_Date'] < date_slider
