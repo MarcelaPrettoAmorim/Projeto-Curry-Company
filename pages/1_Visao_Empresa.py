@@ -167,7 +167,7 @@ df1 = clean_code(df1)
 # -----------------------------------
 #    Barra lateral do Streamlit
 # -----------------------------------
-st.header('Marketplace - Visão Cliente')
+st.header('Marketplace - Visão Empresa')
 
 image = Image.open('Logo.jpg')
 st.sidebar.image(image, width = 240)
@@ -191,8 +191,6 @@ traffic_options = st.sidebar.multiselect(
     ['Low', 'Medium', 'High', 'Jam'],
     default = ['Low','Medium', 'High', 'Jam'])
 
-st.sidebar.markdown("""---""")
-st.sidebar.markdown('### Powered by Comunidade DS')
 
 # Filtro de datas
 linhas_selecionadas = df1['Order_Date'] < date_slider
