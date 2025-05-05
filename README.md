@@ -100,7 +100,7 @@ Cada visão é representada pelo seguinte conjunto de métricas.
 
 Foi elaborado um painel online que está hospedado em uma Cloud e disponível para acesso através de  qualquer dispositivo conectado à internet.
 
-O painel pode ser acessado em [Curry Company App](https://marcelaprettoamorim-curry-company.streamlit.app/).
+O painel pode ser acessado em [Curry Company App](https://projeto-curry-company-marcela.streamlit.app/).
 
 ## 6. Próximos passos
 Esta é a primeira versão do projeto, sendo possível diversas melhorias.
